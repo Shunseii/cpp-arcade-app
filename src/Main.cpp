@@ -1,7 +1,8 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 
-#include "Vec2D.h"
+#include "Utils/Vec2D.h"
+#include "Graphics/Color.h"
 
 const int SCREEN_WIDTH = 224;
 const int SCREEN_HEIGHT = 288;
@@ -10,11 +11,14 @@ void SetPixel(SDL_Surface* noptrWindowSurfacei, uint32_t color, int x, int y);
 size_t GetIndex(SDL_Surface* noptrSurface, int r, int c);
 
 int main(int argc, char* argv[]) {
+
+	// Initialize SDL Video
 	if (SDL_Init(SDL_INIT_VIDEO)) {
 		std::cout << "Error SDL_Init Failed" << std::endl;
 		return 1;
 	}
-
+	
+	// Create SDL window
 	SDL_Window* optrWindow = SDL_CreateWindow(
 			"Arcade", 
 			SDL_WINDOWPOS_CENTERED, 
@@ -31,10 +35,14 @@ int main(int argc, char* argv[]) {
 
 	// Canvas
 	SDL_Surface* noptrWindowSurface = SDL_GetWindowSurface(optrWindow);
+
+	// Set pixel format of Color class to format used in the window surface	
+	SDL_PixelFormat* pixelFormat = noptrWindowSurface->format;
+	Color::InitColorFormat(pixelFormat);
+
+	Color c(255, 255, 0, 255);
 	
-	uint32_t color = 0xFF0000;
-	
-	SetPixel(noptrWindowSurface, color, SCREEN_WIDTH/2, SCREEN_HEIGHT / 2);
+	SetPixel(noptrWindowSurface, c.GetPixelColor(), SCREEN_WIDTH/2, SCREEN_HEIGHT / 2);
 	SDL_UpdateWindowSurface(optrWindow);
 
 	SDL_Event sdlEvent;
