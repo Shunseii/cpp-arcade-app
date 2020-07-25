@@ -10,6 +10,7 @@ add_executable(${PROJECT_NAME}
 	src/Utils/Vec2D.cpp 
 	src/Utils/Utils.cpp
 	src/Graphics/Color.cpp
+	src/Graphics/ScreenBuffer.cpp
 )
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
 
