@@ -1,1 +1,5 @@
+## C++ build directoy
 build/
+
+## Vim swap files 
+*.swp
