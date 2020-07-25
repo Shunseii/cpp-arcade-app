@@ -39,10 +39,8 @@ int main(int argc, char* argv[]) {
 	// Set pixel format of Color class to format used in the window surface	
 	SDL_PixelFormat* pixelFormat = noptrWindowSurface->format;
 	Color::InitColorFormat(pixelFormat);
-
-	Color c(255, 255, 0, 255);
 	
-	SetPixel(noptrWindowSurface, c.GetPixelColor(), SCREEN_WIDTH/2, SCREEN_HEIGHT / 2);
+	SetPixel(noptrWindowSurface, Color::Orange().GetPixelColor(), SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 	SDL_UpdateWindowSurface(optrWindow);
 
 	SDL_Event sdlEvent;
