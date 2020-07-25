@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/vec.dir/src/main.cpp.o CMakeFiles/vec.dir/src/Vec2D.cpp.o CMakeFiles/vec.dir/src/Utils.cpp.o  -o vec -lSDL2 

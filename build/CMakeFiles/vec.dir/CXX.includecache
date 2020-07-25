@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/Utils.h
+
+../include/Vec2D.h
+iostream
+-
+
+/home/shunsei/Desktop/c++/arcade_app/src/Utils.cpp
+cmath
+-
+Utils.h
+/home/shunsei/Desktop/c++/arcade_app/src/Utils.h
+
+/home/shunsei/Desktop/c++/arcade_app/src/Vec2D.cpp
+iostream
+-
+cassert
+-
+cmath
+-
+Vec2D.h
+/home/shunsei/Desktop/c++/arcade_app/src/Vec2D.h
+Utils.h
+/home/shunsei/Desktop/c++/arcade_app/src/Utils.h
+
+/home/shunsei/Desktop/c++/arcade_app/src/main.cpp
+iostream
+-
+Vec2D.h
+/home/shunsei/Desktop/c++/arcade_app/src/Vec2D.h
+SDL2/SDL.h
+-
+
