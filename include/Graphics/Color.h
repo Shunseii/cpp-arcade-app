@@ -5,13 +5,30 @@
 
 struct SDL_PixelFormat;
 
+/*
+ * Color Class which handles converting between
+ * 	 SDL pixel format of the window and RGBA.
+ */
+
 class Color {
 	private:
 		uint32_t mColor;
 	
 	public:
+		// Must initialize to use specific color format
 		static const SDL_PixelFormat* mFormat;
 		static void InitColorFormat(const SDL_PixelFormat* format);
+	
+		// Preset colors
+		static Color Black() {return Color(0, 0, 0, 255);}
+		static Color White() {return Color(255, 255, 255, 255);}
+		static Color Red() {return Color(255, 0, 0, 255);}
+		static Color Blue() {return Color(0, 0, 255, 255);}
+		static Color Green() {return Color(0, 255, 0, 255);}
+		static Color Yellow() {return Color(255, 255, 0, 255);}
+		static Color Magenta() {return Color(255, 0, 255, 255);}
+		static Color Cyan() {return Color(0, 255, 255, 255);}
+		static Color Orange() {return Color(255, 150, 0, 255);}
 
 		Color(): mColor(0) {}
 		Color(uint32_t color): mColor(color) {}
