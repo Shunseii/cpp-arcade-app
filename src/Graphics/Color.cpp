@@ -3,7 +3,7 @@
 
 const SDL_PixelFormat* Color::mFormat = nullptr;
 
-void Color::InitColotFormat(const SDL_PixelFormat* format) {
+void Color::InitColorFormat(const SDL_PixelFormat* format) {
 	Color::mFormat = format;
 }
 

@@ -11,7 +11,7 @@ class Color {
 	
 	public:
 		static const SDL_PixelFormat* mFormat;
-		static void InitColotFormat(const SDL_PixelFormat* format);
+		static void InitColorFormat(const SDL_PixelFormat* format);
 
 		Color(): mColor(0) {}
 		Color(uint32_t color): mColor(color) {}
