@@ -2,8 +2,8 @@
 #include <cassert>
 #include <cmath>
 
-#include "Vec2D.h"
-#include "Utils.h"
+#include "Utils/Vec2D.h"
+#include "Utils/Utils.h"
 
 const Vec2D Vec2D::ZERO{};
 
