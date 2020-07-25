@@ -1,3 +1,0 @@
-/home/shunsei/Desktop/c++/arcade_app/build/CMakeFiles/rebuild_cache.dir
-/home/shunsei/Desktop/c++/arcade_app/build/CMakeFiles/arcade.dir
-/home/shunsei/Desktop/c++/arcade_app/build/CMakeFiles/edit_cache.dir
