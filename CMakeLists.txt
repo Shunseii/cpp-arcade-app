@@ -6,7 +6,7 @@ find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIRS})
 
 add_executable(${PROJECT_NAME} 
-	src/main.cpp 
+	src/Main.cpp 
 	src/Utils/Vec2D.cpp 
 	src/Utils/Utils.cpp
 	src/Graphics/Color.cpp
