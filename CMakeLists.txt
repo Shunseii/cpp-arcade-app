@@ -11,6 +11,7 @@ add_executable(${PROJECT_NAME}
 	src/Utils/Utils.cpp
 	src/Graphics/Color.cpp
 	src/Graphics/ScreenBuffer.cpp
+	src/Graphics/Screen.cpp
 )
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
 
