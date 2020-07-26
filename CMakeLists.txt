@@ -21,4 +21,5 @@ target_include_directories(${PROJECT_NAME}
 		${PROJECT_SOURCE_DIR}/include
 		${PROJECT_SOURCE_DIR}/include/Graphics
 		${PROJECT_SOURCE_DIR}/include/Utils
+		${PROJECT_SOURCE_DIR}/include/Shapes
 )
