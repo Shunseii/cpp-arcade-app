@@ -14,10 +14,10 @@ class Vec2D {
 		Vec2D();
 		Vec2D(float, float);
 
-		inline void setX(float x) {this->mX = x;}	
-		inline void setY(float y) {this->mY = y;}
-		inline float getX() const {return this->mX;}	
-		inline float getY() const {return this->mY;}
+		inline void SetX(float x) {this->mX = x;}	
+		inline void SetY(float y) {this->mY = y;}
+		inline float GetX() const {return this->mX;}	
+		inline float GetY() const {return this->mY;}
 
 		friend std::ostream& operator<<(std::ostream&, const Vec2D&);
 		
