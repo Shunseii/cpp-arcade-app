@@ -6,6 +6,8 @@
 #include "Graphics/Color.h"
 
 class Vec2D;
+class Line2D;
+
 struct SDL_Window;
 struct SDL_Surface;
 
@@ -43,6 +45,7 @@ class Screen {
 		// Draw Methods
 		void Draw(int x, int y, const Color&);
 		void Draw(const Vec2D& point, const Color&);
+		void Draw(const Line2D&, const Color&);
 };
 
 #endif

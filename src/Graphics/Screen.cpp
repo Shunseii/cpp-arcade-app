@@ -2,7 +2,9 @@
 
 #include <SDL2/SDL.h>
 #include <cassert>
+#include <cmath>
 #include "Utils/Vec2D.h"
+#include "Shapes/Line2D.h"
 
 Screen::Screen(): 
 	mWidth(0), 
@@ -87,5 +89,61 @@ void Screen::Draw(const Vec2D& point, const Color& color) {
 	assert(moptrWindow);
 	if (moptrWindow) {
 		mBackBuffer.SetPixel(color, point.GetX(), point.GetY());
+	}
+}
+
+void Screen::Draw(const Line2D& line, const Color& color) {
+	assert(moptrWindow);
+	if (moptrWindow) {
+		int dx, dy;
+
+		int x0 = roundf(line.GetP0().GetX());
+		int y0 = roundf(line.GetP0().GetY());	
+		int x1 = roundf(line.GetP1().GetX());
+		int y1 = roundf(line.GetP1().GetY());
+
+		dx = x1 - x0;
+		dy = y1 - y0;
+
+		signed const char incrX((dx > 0) - (dx < 0)); // gives 1 or -1
+		signed const char incrY((dy > 0) - (dy < 0));
+
+		// Removes floating point
+		dx = abs(dx) * 2;
+		dy = abs(dy) * 2;
+		
+		// Draw first point of the line
+		Draw(x0, y0, color);
+
+		if (dx >= dy) { // Move in the x direction
+			// Decision parameter
+			int d = dy - dx / 2;
+
+			while (x0 != x1) {
+				if (d >= 0) {
+					d -= dx;
+					y0 += incrY;
+				}
+
+				d += dy;
+				x0 += incrX;
+
+				Draw(x0, y0, color);
+			}
+		} else { // Move in the y direction
+			int d = dx - dy / 2;
+
+			while (y0 != y1) {
+				if (d >= 0) {
+					d -= dy;
+					x0 += incrX;
+				}
+
+				d += dx;
+				y0 += incrY;
+
+				Draw(x0, y0, color);
+			}
+		}
 	}
 }
