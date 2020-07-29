@@ -14,6 +14,7 @@ add_executable(${PROJECT_NAME}
 	src/Graphics/Screen.cpp
 	src/Shapes/Line2D.cpp
 	src/Shapes/Shape.cpp
+	src/Shapes/Triangle.cpp
 )
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
 
