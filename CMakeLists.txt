@@ -13,6 +13,7 @@ add_executable(${PROJECT_NAME}
 	src/Graphics/ScreenBuffer.cpp
 	src/Graphics/Screen.cpp
 	src/Shapes/Line2D.cpp
+	src/Shapes/Shape.cpp
 )
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
 
