@@ -16,6 +16,7 @@ add_executable(${PROJECT_NAME}
 	src/Shapes/Shape.cpp
 	src/Shapes/Triangle.cpp
 	src/Shapes/AARectangle.cpp
+	src/Shapes/Circle.cpp
 )
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
 
