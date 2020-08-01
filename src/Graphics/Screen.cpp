@@ -5,6 +5,7 @@
 #include <cmath>
 #include "Utils/Vec2D.h"
 #include "Shapes/Line2D.h"
+#include "Shapes/Triangle.h"
 
 Screen::Screen(): 
 	mWidth(0), 
@@ -146,4 +147,15 @@ void Screen::Draw(const Line2D& line, const Color& color) {
 			}
 		}
 	}
+}
+
+
+void Screen::Draw(const Triangle& triangle, const Color& color) {
+	Line2D lineP0ToP1 = Line2D(triangle.GetP0(), triangle.GetP1());
+	Line2D lineP1ToP2 = Line2D(triangle.GetP1(), triangle.GetP2());
+	Line2D lineP0ToP2 = Line2D(triangle.GetP0(), triangle.GetP2());
+
+	Draw(lineP0ToP1, color);	
+	Draw(lineP1ToP2, color);
+	Draw(lineP0ToP2, color);
 }
