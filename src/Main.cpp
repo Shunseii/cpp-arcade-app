@@ -6,6 +6,7 @@
 #include "Shapes/Line2D.h"
 #include "Shapes/Triangle.h"
 #include "Shapes/AARectangle.h"
+#include "Shapes/Circle.h"
 
 const int SCREEN_WIDTH = 224;
 const int SCREEN_HEIGHT = 288;
@@ -27,8 +28,14 @@ int main(int argc, char* argv[]) {
 	theScreen.SwapScreens();	
 	*/
 
+	/*
 	AARectangle rect{Vec2D(20, 50), 50, 100};
 	theScreen.Draw(rect, Color::Red());
+	theScreen.SwapScreens();	
+	*/
+
+	Circle circle{Vec2D(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), 50};
+	theScreen.Draw(circle, Color::Orange());
 	theScreen.SwapScreens();	
 	
 	SDL_Event sdlEvent;
