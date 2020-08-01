@@ -61,9 +61,9 @@ std::vector<Vec2D> AARectangle::GetPoints() const {
 	std::vector<Vec2D> points;
 
 	points.push_back(mPoints[0]); // top left
-	points.push_back(Vec2D(mPoints[1].GetY(), mPoints[0].GetX())); // top right
+	points.push_back(Vec2D(mPoints[1].GetX(), mPoints[0].GetY())); // top right
 	points.push_back(mPoints[1]); // bottom right
-	points.push_back(Vec2D(mPoints[0].GetY(), mPoints[1].GetY())); // bottom left
+	points.push_back(Vec2D(mPoints[0].GetX(), mPoints[1].GetY())); // bottom left
 
 	return points;
 }
