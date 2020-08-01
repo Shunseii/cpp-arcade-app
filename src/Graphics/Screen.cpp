@@ -6,6 +6,7 @@
 #include "Utils/Vec2D.h"
 #include "Shapes/Line2D.h"
 #include "Shapes/Triangle.h"
+#include "Shapes/AARectangle.h"
 
 Screen::Screen(): 
 	mWidth(0), 
@@ -158,4 +159,18 @@ void Screen::Draw(const Triangle& triangle, const Color& color) {
 	Draw(lineP0ToP1, color);	
 	Draw(lineP1ToP2, color);
 	Draw(lineP0ToP2, color);
+}
+
+void Screen::Draw(const AARectangle& rect, const Color& color) {
+	std::vector<Vec2D> points = rect.GetPoints();
+	
+	Line2D top = Line2D(points[0], points[1]);
+	Line2D right = Line2D(points[1], points[2]);
+	Line2D bottom = Line2D(points[2], points[3]);
+	Line2D left = Line2D(points[0], points[3]);
+
+	Draw(top, color);
+	Draw(right, color);
+	Draw(bottom, color);
+	Draw(left, color);
 }
