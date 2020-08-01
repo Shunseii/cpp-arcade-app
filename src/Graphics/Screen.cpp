@@ -4,9 +4,11 @@
 #include <cassert>
 #include <cmath>
 #include "Utils/Vec2D.h"
+#include "Utils/Utils.h"
 #include "Shapes/Line2D.h"
 #include "Shapes/Triangle.h"
 #include "Shapes/AARectangle.h"
+#include "Shapes/Circle.h"
 
 Screen::Screen(): 
 	mWidth(0), 
@@ -173,4 +175,24 @@ void Screen::Draw(const AARectangle& rect, const Color& color) {
 	Draw(right, color);
 	Draw(bottom, color);
 	Draw(left, color);
+}
+
+void Screen::Draw(const Circle& circle, const Color& color) {
+	static unsigned int NUM_CIRCLE_SEGMENTS = 300;
+
+	float angle = TWO_PI / float(NUM_CIRCLE_SEGMENTS);
+
+	Vec2D p0 = Vec2D(circle.GetCenterPoint().GetX() + circle.GetRadius(), 
+			circle.GetCenterPoint().GetY());
+	Vec2D p1 = p0;
+	Line2D nextLineToDraw;
+
+	for (unsigned int i = 0; i < NUM_CIRCLE_SEGMENTS; ++i) {
+		p1.Rotate(angle, circle.GetCenterPoint());
+		nextLineToDraw.SetP1(p1);
+		nextLineToDraw.SetP0(p0);
+
+		Draw(nextLineToDraw, color);
+		p0 = p1;
+	}
 }
