@@ -2,6 +2,7 @@
 #define GRAPHICS_SCREEN_H
 
 #include <stdint.h>
+#include <vector>
 #include "Graphics/ScreenBuffer.h"
 #include "Graphics/Color.h"
 
@@ -25,6 +26,7 @@ class Screen {
 		Screen& operator=(const Screen&);
 
 		void ClearScreen();
+		void FillPoly(const std::vector<Vec2D>& points, const Color&);
 
 		uint32_t mWidth, mHeight;
 		
@@ -49,9 +51,12 @@ class Screen {
 		void Draw(int x, int y, const Color&);
 		void Draw(const Vec2D& point, const Color&);
 		void Draw(const Line2D&, const Color&);
-		void Draw(const Triangle&, const Color&);
-		void Draw(const AARectangle&, const Color&);
-		void Draw(const Circle&, const Color&);
+		void Draw(const Triangle&, const Color&, 
+				bool fill = false, const Color& fillColor = Color::White());
+		void Draw(const AARectangle&, const Color&, 
+				bool fill = false, const Color& fillColor = Color::White());
+		void Draw(const Circle&, const Color&, 
+				bool fill = false, const Color& fillColor = Color::White());
 };
 
 #endif
