@@ -21,21 +21,15 @@ int main(int argc, char* argv[]) {
 	theScreen.Draw(line, Color::Yellow());
 	theScreen.SwapScreens();	
 	*/
-	
-	/*
+		
 	Triangle triangle{Vec2D(SCREEN_WIDTH / 2, 10), Vec2D(10, SCREEN_HEIGHT / 2), Vec2D(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)};
-	theScreen.Draw(triangle, Color::Blue());
-	theScreen.SwapScreens();	
-	*/
+	theScreen.Draw(triangle, Color::Blue(), true, Color::Blue());
 
-	/*
 	AARectangle rect{Vec2D(20, 50), 50, 100};
-	theScreen.Draw(rect, Color::Red());
-	theScreen.SwapScreens();	
-	*/
+	theScreen.Draw(rect, Color::Red(), true, Color::Red());
 
 	Circle circle{Vec2D(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), 50};
-	theScreen.Draw(circle, Color::Orange());
+	theScreen.Draw(circle, Color::Orange(), true, Color::Orange());
 	theScreen.SwapScreens();	
 	
 	SDL_Event sdlEvent;
