@@ -51,7 +51,8 @@ SDL_Window* Screen::Init(uint32_t w, uint32_t h, uint32_t mag) {
 		mnoptrSurface = SDL_GetWindowSurface(moptrWindow);
 	
 		// Set pixel format of Color class to format used in the window surface	
-		SDL_PixelFormat* pixelFormat = mnoptrSurface->format;
+		// SDL_PixelFormat* pixelFormat = mnoptrSurface->format; // returns RGB8888 format which ignores alpha channel
+		SDL_PixelFormat* pixelFormat = SDL_AllocFormat(SDL_PIXELFORMAT_RGBA8888);
 		Color::InitColorFormat(pixelFormat);
 
 		mClearColor = Color::Black();
