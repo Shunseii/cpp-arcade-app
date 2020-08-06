@@ -43,30 +43,52 @@ void Color::SetAlpha(uint8_t alpha) {
 	SetRGBA(r, g, b, alpha);
 }
 
-uint8_t Color::GetRed(uint8_t red) const {
+uint8_t Color::GetRed() const {
 	uint8_t r, g, b, a;
 
 	SDL_GetRGBA(mColor, mFormat, &r, &g, &b, &a);
 	return r;
 }
 
-uint8_t Color::GetGreen(uint8_t green) const {
+uint8_t Color::GetGreen() const {
 	uint8_t r, g, b, a;
 
 	SDL_GetRGBA(mColor, mFormat, &r, &g, &b, &a);
 	return g;
 }
 
-uint8_t Color::GetBlue(uint8_t blue) const {
+uint8_t Color::GetBlue() const {
 	uint8_t r, g, b, a;
 
 	SDL_GetRGBA(mColor, mFormat, &r, &g, &b, &a);
 	return b;
 }
 
-uint8_t Color::GetAlpha(uint8_t alpha) const {
+uint8_t Color::GetAlpha() const {
 	uint8_t r, g, b, a;
 
 	SDL_GetRGBA(mColor, mFormat, &r, &g, &b, &a);
 	return a;
+}
+
+Color Color::Evaluate1MinusSourceAlpha(
+		const Color& source, const Color& dest) {
+	uint8_t alpha = source.GetAlpha();
+
+	float sourceAlpha = float(alpha) / 255.0f;
+	float destAlpha = 1.0f - sourceAlpha;
+
+	Color outColor;
+
+	outColor.SetAlpha(255);
+	outColor.SetRed(float(source.GetRed()) * sourceAlpha + 
+			dest.GetRed() * destAlpha);
+
+	outColor.SetBlue(float(source.GetBlue()) * sourceAlpha + 
+			dest.GetBlue() * destAlpha);
+	
+	outColor.SetGreen(float(source.GetGreen()) * sourceAlpha + 
+			dest.GetGreen() * destAlpha);
+	
+	return outColor;
 }

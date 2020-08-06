@@ -96,8 +96,9 @@ void ScreenBuffer::SetPixel(const Color& color, int x, int y) {
 
 		// y -> row, x -> column
 		size_t index = GetIndex(y, x);
-		pixels[index] = color.GetPixelColor();
-		
+		Color surfaceColor = Color(pixels[index]); // Destination color
+		pixels[index] = Color::Evaluate1MinusSourceAlpha(color, surfaceColor).GetPixelColor();
+
 		SDL_UnlockSurface(mSurface);
 	}
 }

@@ -18,7 +18,9 @@ class Color {
 		// Must initialize to use specific color format
 		static const SDL_PixelFormat* mFormat;
 		static void InitColorFormat(const SDL_PixelFormat* format);
-	
+		
+		static Color Evaluate1MinusSourceAlpha(const Color& source, const Color& dest);
+
 		// Preset colors
 		static Color Black() {return Color(0, 0, 0, 255);}
 		static Color White() {return Color(255, 255, 255, 255);}
@@ -45,10 +47,10 @@ class Color {
 		void SetBlue(uint8_t blue);
 		void SetAlpha(uint8_t alpha);
 
-		uint8_t GetRed(uint8_t red) const;
-		uint8_t GetGreen(uint8_t green) const;
-		uint8_t GetBlue(uint8_t blue) const;
-		uint8_t GetAlpha(uint8_t alpha) const;
+		uint8_t GetRed() const;
+		uint8_t GetGreen() const;
+		uint8_t GetBlue() const;
+		uint8_t GetAlpha() const;
 };
 
 #endif

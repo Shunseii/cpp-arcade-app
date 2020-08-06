@@ -15,21 +15,12 @@ const int MAGNIFICATION = 1;
 int main(int argc, char* argv[]) {
 	Screen theScreen;
 	theScreen.Init(SCREEN_WIDTH, SCREEN_HEIGHT, MAGNIFICATION);
-	
-	/*
-	Line2D line{Vec2D(0,0), Vec2D(SCREEN_WIDTH, SCREEN_HEIGHT)};
-	theScreen.Draw(line, Color::Yellow());
-	theScreen.SwapScreens();	
-	*/
 		
 	Triangle triangle{Vec2D(SCREEN_WIDTH / 2, 10), Vec2D(10, SCREEN_HEIGHT / 2), Vec2D(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)};
 	theScreen.Draw(triangle, Color::Blue(), true, Color::Blue());
 
-	AARectangle rect{Vec2D(20, 50), 50, 100};
-	theScreen.Draw(rect, Color::Red(), true, Color::Red());
-
 	Circle circle{Vec2D(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), 50};
-	theScreen.Draw(circle, Color::Orange(), true, Color::Orange());
+	theScreen.Draw(circle, Color(0, 255, 0, 150), true, Color(0, 255, 0, 150));
 	theScreen.SwapScreens();	
 	
 	SDL_Event sdlEvent;
