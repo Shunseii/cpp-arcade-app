@@ -17,6 +17,7 @@ add_executable(${PROJECT_NAME}
 	src/Shapes/Triangle.cpp
 	src/Shapes/AARectangle.cpp
 	src/Shapes/Circle.cpp
+	src/App/App.cpp
 )
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
 
@@ -27,4 +28,5 @@ target_include_directories(${PROJECT_NAME}
 		${PROJECT_SOURCE_DIR}/include/Graphics
 		${PROJECT_SOURCE_DIR}/include/Utils
 		${PROJECT_SOURCE_DIR}/include/Shapes
+		${PROJECT_SOURCE_DIR}/include/App
 )
