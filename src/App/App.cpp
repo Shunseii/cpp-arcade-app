@@ -3,11 +3,7 @@
 #include <SDL2/SDL.h>
 #include <iostream>
 
-#include "Shapes/Line2D.h"
-#include "Shapes/Triangle.h"
-#include "Shapes/AARectangle.h"
-#include "Shapes/Circle.h"
-#include "Graphics/Color.h"
+#include "Scenes/ArcadeScene.h"
 
 App& App::Singleton() {
 	static App theApp;
@@ -29,6 +25,9 @@ void App::Run() {
 
 		uint32_t dt = 10; // Update in 10 ms intervals
 		uint32_t accumulator = 0;
+
+		std::unique_ptr<ArcadeScene> arcadeScene = std::make_unique<ArcadeScene>();
+		arcadeScene->Init();
 
 		while (running) {
 			currentTick = SDL_GetTicks();
@@ -53,15 +52,13 @@ void App::Run() {
 			// Update
 			while (accumulator >= dt) {
 				// Update current scene by dt (10 ms intervals)
+				arcadeScene->Update(dt);
+
 				accumulator -= dt;
 			}
 
 			// Render 
-			Triangle triangle{Vec2D(mScreen.Width() / 2, 10), Vec2D(10, mScreen.Height() / 2), Vec2D(mScreen.Width() / 2, mScreen.Height() / 2)};
-			mScreen.Draw(triangle, Color::Blue(), true, Color::Blue());
-			Circle circle{Vec2D(mScreen.Width() / 2, mScreen.Height() / 2), 50};
-			mScreen.Draw(circle, Color(0, 255, 0, 150), true, Color(0, 255, 0, 150));
-
+			arcadeScene->Draw(mScreen);
 			mScreen.SwapScreens();
 		}
 	}
