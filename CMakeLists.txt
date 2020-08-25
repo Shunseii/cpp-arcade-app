@@ -18,6 +18,7 @@ add_executable(${PROJECT_NAME}
 	src/Shapes/AARectangle.cpp
 	src/Shapes/Circle.cpp
 	src/App/App.cpp
+	src/Scenes/ArcadeScene.cpp
 )
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
 
