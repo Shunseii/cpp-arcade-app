@@ -29,4 +29,5 @@ target_include_directories(${PROJECT_NAME}
 		${PROJECT_SOURCE_DIR}/include/Utils
 		${PROJECT_SOURCE_DIR}/include/Shapes
 		${PROJECT_SOURCE_DIR}/include/App
+		${PROJECT_SOURCE_DIR}/include/Scene
 )
