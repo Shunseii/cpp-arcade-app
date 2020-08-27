@@ -39,5 +39,6 @@ void ArcadeScene::Draw(Screen& theScreen) {
 }
 
 const std::string& ArcadeScene::GetSceneName() const {
-	return "Arcade Scene";
+	static std::string sceneName = "Arcade Scene";
+	return sceneName;
 }
