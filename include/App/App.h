@@ -6,6 +6,7 @@
 #include <memory>
 #include "Scenes/Scene.h"
 #include "Graphics/Screen.h"
+#include "Input/InputController.h"
 
 struct SDL_WINDOW;
 
@@ -15,6 +16,7 @@ class App {
 		SDL_Window* mnoptrWindow;
 	
 		std::vector<std::unique_ptr<Scene>> mSceneStack;
+		InputController mInputController;
 
 	public:
 		static App& Singleton();
