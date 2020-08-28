@@ -1,11 +1,13 @@
 #include "Scenes/ArcadeScene.h"
 
+#include <iostream>
 #include "Graphics/Screen.h"
 #include "Shapes/Line2D.h"
 #include "Shapes/Triangle.h"
 #include "Shapes/AARectangle.h"
 #include "Shapes/Circle.h"
 #include "Graphics/Color.h"
+#include "Input/GameController.h"
 
 std::unique_ptr<Scene> ArcadeScene::GetScene(eGame game) {
 	switch (game) {
@@ -26,7 +28,17 @@ std::unique_ptr<Scene> ArcadeScene::GetScene(eGame game) {
 
 ArcadeScene::ArcadeScene() {}
 
-void ArcadeScene::Init() {}
+void ArcadeScene::Init() {
+	ButtonAction action;
+	action.key = GameController::ActionKey();
+	action.action = [](uint32_t dt, InputState state){
+		if (GameController::IsPressed(state)) {
+			std::cout << "Action button was pressed." << std::endl;
+		}
+	};
+
+	mGameController.AddInputAction(action);
+}
 
 void ArcadeScene::Update(uint32_t dt) {}
 
