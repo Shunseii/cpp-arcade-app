@@ -23,7 +23,6 @@ bool App::Init(uint32_t width, uint32_t height, uint32_t mag) {
 
 void App::Run() {
 	if (mnoptrWindow) {
-		SDL_Event sdlEvent;
 		bool running = true;
 
 		uint32_t lastTick = SDL_GetTicks(); // Number of ms since SDL initialization
@@ -31,6 +30,10 @@ void App::Run() {
 
 		uint32_t dt = 10; // Update in 10 ms intervals
 		uint32_t accumulator = 0;
+
+		mInputController.Init([&running](uint32_t dt, InputState state){
+			running = false;
+		});
 
 		while (running) {
 			currentTick = SDL_GetTicks();
@@ -44,13 +47,7 @@ void App::Run() {
 			accumulator += frameTime; // Number of ticks in total
 
 			// Input
-			while (SDL_PollEvent(&sdlEvent)) {
-				switch (sdlEvent.type) {
-					case SDL_QUIT:
-						running = false;
-						break;
-				}
-			}
+			mInputController.Update(dt);
 
 			Scene* topScene = App::TopScene();
 
@@ -77,6 +74,7 @@ void App::PushScene(std::unique_ptr<Scene> scene) {
 	if (scene) {
 		scene->Init();
 
+		mInputController.SetGameController(scene->GetGameController());
 		mSceneStack.emplace_back(std::move(scene)); // Moves scene instead of copy	
 		SDL_SetWindowTitle(mnoptrWindow, TopScene()->GetSceneName().c_str());
 	}
@@ -88,6 +86,7 @@ void App::PopScene() {
 	}
 
 	if (TopScene()) {
+		mInputController.SetGameController(TopScene()->GetGameController());
 		SDL_SetWindowTitle(mnoptrWindow, TopScene()->GetSceneName().c_str());
 	}
 }
