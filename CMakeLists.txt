@@ -21,6 +21,7 @@ add_executable(${PROJECT_NAME}
 	src/Scenes/ArcadeScene.cpp
 	src/Input/InputController.cpp
 	src/Input/GameController.cpp
+	src/Scenes/GameScene.cpp
 )
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
 
@@ -34,4 +35,5 @@ target_include_directories(${PROJECT_NAME}
 		${PROJECT_SOURCE_DIR}/include/App
 		${PROJECT_SOURCE_DIR}/include/Scene
 		${PROJECT_SOURCE_DIR}/include/Input
+		${PROJECT_SOURCE_DIR}/include/Games
 )
