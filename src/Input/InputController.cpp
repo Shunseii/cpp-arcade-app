@@ -18,6 +18,31 @@ void InputController::Update(uint32_t dt) {
 			case SDL_QUIT:
 				mQuit(dt, SDL_PRESSED);
 				break;
+			
+			case SDL_MOUSEMOTION:
+				if (mnoptrCurrentController) {
+					if (MouseMovedAction mouseMoved = mnoptrCurrentController->GetMouseMovedAction()) {
+						MousePosition pos;
+						pos.xPos = sdlEvent.motion.x;
+						pos.yPos = sdlEvent.motion.y;
+						mouseMoved(pos);
+					}
+				}
+				break;
+
+			case SDL_MOUSEBUTTONUP:
+			case SDL_MOUSEBUTTONDOWN:
+				if (mnoptrCurrentController) {
+					MouseInputAction action = 
+						mnoptrCurrentController->GetMouseButtonActionForMouseButton(
+								static_cast<MouseButton>(sdlEvent.button.button));
+					MousePosition pos;
+					pos.xPos = sdlEvent.button.x;
+					pos.yPos = sdlEvent.button.y;
+
+					action(static_cast<InputState>(sdlEvent.button.state), pos);
+				}
+				break;
 
 			case SDL_KEYDOWN:
 			case SDL_KEYUP:

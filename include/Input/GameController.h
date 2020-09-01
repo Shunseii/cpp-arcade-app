@@ -7,6 +7,8 @@
 class GameController {
 	private:
 		std::vector<ButtonAction> mButtonActions;
+		std::vector<MouseButtonAction> mMouseButtonActions;
+		MouseMovedAction mMouseMovedAction;
 
 	public:
 		GameController();
@@ -25,6 +27,15 @@ class GameController {
 		static InputKey RightKey();
 		static InputKey UpKey();
 		static InputKey DownKey();
+
+		inline const MouseMovedAction& GetMouseMovedAction() {return mMouseMovedAction;}
+		inline void SetMouseMovedAction(const MouseMovedAction& action) {mMouseMovedAction = action;}
+
+		MouseInputAction GetMouseButtonActionForMouseButton(MouseButton button);
+		void AddMouseButtonAction(const MouseButtonAction& action);
+
+		static MouseButton LeftMouseButton();
+		static MouseButton RightMouseButton();
 };
 
 #endif
