@@ -22,6 +22,7 @@ add_executable(${PROJECT_NAME}
 	src/Input/InputController.cpp
 	src/Input/GameController.cpp
 	src/Scenes/GameScene.cpp
+	src/Utils/FileCommandLoader.cpp
 )
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
 
