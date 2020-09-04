@@ -6,7 +6,6 @@
 
 #include "Scenes/ArcadeScene.h"
 
-
 App& App::Singleton() {
 	static App theApp;
 	return theApp;
