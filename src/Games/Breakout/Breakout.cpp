@@ -44,10 +44,9 @@ std::string Breakout::GetName() const {
 }
 
 void Breakout::ResetGame() {
-	Vec2D topLeftPoint = {
-		App::Singleton().GetWidth() / 2 - Paddle::PADDLE_WIDTH / 2,
-		App::Singleton().GetHeight() - 3 * Paddle::PADDLE_HEIGHT
-	};
+	Vec2D topLeftPoint = Vec2D(
+			App::Singleton().GetWidth() / 2 - Paddle::PADDLE_WIDTH / 2,
+			App::Singleton().GetHeight() - 3 * Paddle::PADDLE_HEIGHT);
 
 	AARectangle paddleRect = {topLeftPoint, Paddle::PADDLE_WIDTH, Paddle::PADDLE_HEIGHT};
 	AARectangle levelBoundary = {
