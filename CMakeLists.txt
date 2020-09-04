@@ -25,6 +25,7 @@ add_executable(${PROJECT_NAME}
 	src/Utils/FileCommandLoader.cpp
 	src/Games/Breakout/Breakout.cpp
 	src/Games/Breakout/Excluder.cpp
+	src/Games/Breakout/Paddle.cpp
 )
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
 
