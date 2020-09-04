@@ -1,4 +1,4 @@
-#include "Games/Breakout.h"
+#include "Games/Breakout/Breakout.h"
 
 #include <iostream>
 

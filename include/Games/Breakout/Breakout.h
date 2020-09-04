@@ -1,7 +1,7 @@
 #ifndef GAMES_BREAKOUT_H_
 #define GAMES_BREAKOUT_H_
 
-#include "Game.h"
+#include "Games/Game.h"
 
 class Breakout : public Game {
 	public:

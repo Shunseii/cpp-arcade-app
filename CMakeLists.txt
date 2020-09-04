@@ -23,7 +23,8 @@ add_executable(${PROJECT_NAME}
 	src/Input/GameController.cpp
 	src/Scenes/GameScene.cpp
 	src/Utils/FileCommandLoader.cpp
-	src/Games/Breakout.cpp
+	src/Games/Breakout/Breakout.cpp
+	src/Games/Breakout/Excluder.cpp
 )
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
 
@@ -38,4 +39,5 @@ target_include_directories(${PROJECT_NAME}
 		${PROJECT_SOURCE_DIR}/include/Scene
 		${PROJECT_SOURCE_DIR}/include/Input
 		${PROJECT_SOURCE_DIR}/include/Games
+		${PROJECT_SOURCE_DIR}/include/Games/Breakout
 )
