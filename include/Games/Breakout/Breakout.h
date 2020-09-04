@@ -2,8 +2,14 @@
 #define GAMES_BREAKOUT_H_
 
 #include "Games/Game.h"
+#include "Games/Breakout/Paddle.h"
 
 class Breakout : public Game {
+	private:
+		Paddle mPaddle;
+
+		void ResetGame();
+
 	public:
 		virtual void Init(GameController&) override;
 		virtual void Update(uint32_t dt) override;
