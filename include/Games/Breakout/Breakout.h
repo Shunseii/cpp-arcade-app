@@ -14,7 +14,7 @@ class Breakout : public Game {
 		virtual void Init(GameController&) override;
 		virtual void Update(uint32_t dt) override;
 		virtual void Draw(Screen&) override;
-		virtual std::string GetName() const override;
+		virtual const std::string& GetName() const override;
 };
 
 #endif /* GAMES_BREAKOUT_H_ */
