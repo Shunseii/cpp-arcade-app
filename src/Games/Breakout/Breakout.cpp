@@ -32,10 +32,12 @@ void Breakout::Init(GameController& controller) {
 }
 
 void Breakout::Update(uint32_t dt) {
+	mBall.Update(dt);
 	mPaddle.Update(dt);
 }
 
 void Breakout::Draw(Screen& screen) { 	
+	mBall.Draw(screen);
 	mPaddle.Draw(screen);
 }
 
@@ -58,4 +60,5 @@ void Breakout::ResetGame() {
 	};
 
 	mPaddle.Init(paddleRect, levelBoundary);
+	mBall.MoveTo(Vec2D(App::Singleton().GetWidth() / 2, App::Singleton().GetHeight() / 2));
 }

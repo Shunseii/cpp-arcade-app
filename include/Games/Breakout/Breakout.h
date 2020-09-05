@@ -3,10 +3,12 @@
 
 #include "Games/Game.h"
 #include "Games/Breakout/Paddle.h"
+#include "Games/Breakout/Ball.h"
 
 class Breakout : public Game {
 	private:
 		Paddle mPaddle;
+		Ball mBall;
 
 		void ResetGame();
 
