@@ -29,6 +29,8 @@ class App {
 		void PushScene(std::unique_ptr<Scene> scene);
 		void PopScene();
 		Scene* TopScene();
+
+		static const std::string& GetBasePath();
 };
 
 #endif

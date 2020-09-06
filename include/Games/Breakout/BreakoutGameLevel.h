@@ -10,7 +10,10 @@ class Ball;
 class AARectangle;
 
 class BreakoutGameLevel {
-	private:
+	private:	
+		static const int BLOCK_WIDTH = 16;
+		static const int BLOCK_HEIGHT = 28;
+		
 		std::vector<Block> mBlocks;
 
 		void CreateDefaultLevel(const AARectangle& boundary);
@@ -23,6 +26,7 @@ class BreakoutGameLevel {
 		void Update(uint32_t dt, Ball& ball);
 		void Draw(Screen&);
 
+		static std::vector<BreakoutGameLevel> LoadLevelsFromFile(const std::string& filePath);
 };
 
 #endif /* BREAKOUT_BREAKOUTGAMELEVEL_H_ */
