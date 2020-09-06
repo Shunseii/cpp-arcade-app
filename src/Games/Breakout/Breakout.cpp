@@ -8,7 +8,7 @@
 void Breakout::Init(GameController& controller) {
 	controller.ClearAll();
 	mLevels = BreakoutGameLevel::LoadLevelsFromFile(
-			App::GetBasePath() + "Assets/BreakoutLevels.txt");
+			App::GetBasePath() + "../src/Assets/BreakoutLevels.txt");
 	
 	ResetGame();
 
