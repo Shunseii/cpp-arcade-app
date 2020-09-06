@@ -28,6 +28,7 @@ add_executable(${PROJECT_NAME}
 	src/Games/Breakout/Paddle.cpp
 	src/Games/Breakout/Ball.cpp
 	src/Games/Breakout/LevelBoundary.cpp
+	src/Games/Breakout/Block.cpp
 )
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
 
