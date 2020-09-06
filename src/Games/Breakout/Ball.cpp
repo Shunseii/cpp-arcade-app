@@ -24,7 +24,7 @@ void Ball::MakeFlushWithEdge(const BoundaryEdge& edge, Vec2D& pointOnEdge, bool 
 	if (edge.normal == DOWN_DIR) {	
 		mBBox.MoveTo(Vec2D(
 					mBBox.GetTopLeftPoint().GetX(),
-					edge.edge.GetP0().GetY() + mBBox.GetHeight()
+					edge.edge.GetP0().GetY() + edge.normal.GetY()
 				));
 	} else if (edge.normal == UP_DIR) {	
 		mBBox.MoveTo(Vec2D(
@@ -44,6 +44,14 @@ void Ball::MakeFlushWithEdge(const BoundaryEdge& edge, Vec2D& pointOnEdge, bool 
 	}
 
 	pointOnEdge = edge.edge.ClosestPoint(mBBox.GetCenterPoint(), limitToEdge);
+}
+
+void Ball::Bounce(const BoundaryEdge& edge) {
+	Vec2D pointOnEdge;
+
+	MakeFlushWithEdge(edge, pointOnEdge, false);
+
+	mVelocity = mVelocity.Reflect(edge.normal);
 }
 
 void Ball::MoveTo(const Vec2D point) {

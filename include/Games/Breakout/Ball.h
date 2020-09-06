@@ -23,6 +23,8 @@ class Ball {
 		void MakeFlushWithEdge(const BoundaryEdge& edge, Vec2D& pointOnEdge, bool limitToEdge);
 		
 		void MoveTo(const Vec2D point);
+		void Bounce(const BoundaryEdge& edge);
+
 		inline void Stop() {mVelocity = Vec2D::ZERO;}
 		inline const AARectangle GetBoundingBox() const {return mBBox;}
 
