@@ -1,9 +1,12 @@
 #include "Games/Breakout/Paddle.h"
 
+#include <cassert>
+
 #include "Graphics/Screen.h"
 #include "Graphics/Color.h"
 #include "Utils/Utils.h"
 #include "Games/Breakout/BoundaryEdge.h"
+#include "Games/Breakout/Ball.h"
 
 void Paddle::Init(const AARectangle& rect, const AARectangle& boundary) {
 	Excluder::Init(rect);
@@ -11,7 +14,12 @@ void Paddle::Init(const AARectangle& rect, const AARectangle& boundary) {
 	mDirection = 0;
 }
 
-void Paddle::Update(uint32_t dt) {
+void Paddle::Update(uint32_t dt, Ball& ball) {
+	if (GetAARectangle().ContainsPoint(ball.GetPosition())) {
+		Vec2D pointOnEdge;
+		ball.MakeFlushWithEdge(GetEdge(BOTTOM_EDGE), pointOnEdge, true);
+	}
+
 	if (mDirection != 0) {
 		Vec2D dir;
 		
@@ -50,4 +58,31 @@ void Paddle::Update(uint32_t dt) {
 
 void Paddle::Draw(Screen& screen) {
 	screen.Draw(GetAARectangle(), Color::Blue(), true, Color::Blue());
+}
+
+bool Paddle::Bounce(Ball& ball) {
+	BoundaryEdge edge;
+	if (HasCollided(ball.GetBoundingBox(), edge)) {
+		Vec2D pointOnEdge;
+
+		ball.MakeFlushWithEdge(edge, pointOnEdge, true);
+
+		if (edge.edge == GetEdge(TOP_EDGE).edge) {
+			float edgeLength = edge.edge.Length();
+			assert(!IsEqual(edgeLength, 0));
+
+			float tx = (pointOnEdge.GetX() - edge.edge.GetP0().GetX()) / edgeLength;
+
+			if (((tx <= CORNER_BOUNCE_AMNT) && ball.GetVelocity().GetX() > 0) || 
+					(tx >= (1.0f - CORNER_BOUNCE_AMNT) && ball.GetVelocity().GetX() < 0)) {
+				ball.SetVelocity(-ball.GetVelocity());
+				return true;
+			}
+		}
+
+		ball.SetVelocity(ball.GetVelocity().Reflect(edge.normal));
+		return true;
+	}
+
+	return false;
 }
