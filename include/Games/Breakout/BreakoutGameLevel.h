@@ -26,6 +26,8 @@ class BreakoutGameLevel {
 		void Update(uint32_t dt, Ball& ball);
 		void Draw(Screen&);
 
+		bool IsLevelComplete() const;
+
 		static std::vector<BreakoutGameLevel> LoadLevelsFromFile(const std::string& filePath);
 };
 

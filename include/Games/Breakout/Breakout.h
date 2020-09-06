@@ -19,6 +19,7 @@ class Breakout : public Game {
 	private:
 		const float INITIAL_BALL_SPEED = 100;
 		const Vec2D INITIAL_BALL_VELOCITY = Vec2D(100, -100);
+		const int NUM_LIVES = 3;
 
 		Paddle mPaddle;
 		Ball mBall;
@@ -26,10 +27,16 @@ class Breakout : public Game {
 		std::vector<BreakoutGameLevel> mLevels;
 		size_t mCurrentLevel;
 		BreakoutGameState mGameState;
+		int mLives;
+		float mYCutoff;
 
-		void ResetGame();
+		void ResetGame(size_t toLevel = 0);
 		inline BreakoutGameLevel& GetCurrentLevel() {return mLevels[mCurrentLevel];}
 		void SetToServeState();
+
+		bool IsBallPassedCutoffY() const;
+		void ReduceLifeByOne();
+		inline bool IsGameOver() const {return mLives < 0;}
 
 	public:
 		virtual void Init(GameController&) override;
