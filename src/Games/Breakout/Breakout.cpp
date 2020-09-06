@@ -34,11 +34,18 @@ void Breakout::Init(GameController& controller) {
 void Breakout::Update(uint32_t dt) {
 	mBall.Update(dt);
 	mPaddle.Update(dt);
+
+	BoundaryEdge edge;
+
+	if (mLevelBoundary.HasCollided(mBall, edge)) {
+		mBall.Bounce(edge);
+	}
 }
 
 void Breakout::Draw(Screen& screen) { 	
 	mBall.Draw(screen);
 	mPaddle.Draw(screen);
+	screen.Draw(mLevelBoundary.GetAARectangle(), Color::White());
 }
 
 const std::string& Breakout::GetName() const {
@@ -59,6 +66,10 @@ void Breakout::ResetGame() {
 		App::Singleton().GetHeight()
 	};
 
+	mLevelBoundary = {levelBoundary};
+	
 	mPaddle.Init(paddleRect, levelBoundary);
+
 	mBall.MoveTo(Vec2D(App::Singleton().GetWidth() / 2, App::Singleton().GetHeight() / 2));
+	mBall.SetVelocity(INITIAL_BALL_VELOCITY);
 }

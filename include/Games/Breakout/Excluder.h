@@ -19,7 +19,7 @@ class Excluder {
 		bool HasCollided(const AARectangle&, BoundaryEdge&) const;
 		Vec2D GetCollisionOffset(const AARectangle&) const;
 
-		inline AARectangle& GetAARectangle() {return mRect;}
+		inline const AARectangle& GetAARectangle() {return mRect;}
 
 		void MoveBy(const Vec2D& delta);
 		void MoveTo(const Vec2D& point);

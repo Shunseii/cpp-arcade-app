@@ -4,11 +4,15 @@
 #include "Games/Game.h"
 #include "Games/Breakout/Paddle.h"
 #include "Games/Breakout/Ball.h"
+#include "Games/Breakout/LevelBoundary.h"
 
 class Breakout : public Game {
 	private:
+		const Vec2D INITIAL_BALL_VELOCITY = Vec2D(100, -100);
+
 		Paddle mPaddle;
 		Ball mBall;
+		LevelBoundary mLevelBoundary;
 
 		void ResetGame();
 
